@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Audit Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin-top: 20px; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Website Accessibility Audit Tool</h1>
+    <form id="auditForm">
+        <label for="url">Enter Website URL:</label><br>
+        <input type="url" id="url" name="url" required><br><br>
+        <button type="submit">Audit</button>
+    </form>
+
+    <div class="result" id="auditResult" style="display:none;">
+        <h2>Audit Results</h2>
+        <p id="resultsDisplay"></p>
+    </div>
+
+    <script>
+        document.getElementById('auditForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const url = document.getElementById('url').value;
+            // Mock audit results
+            const results = `Audit results for <strong>${url}</strong>:<br>\n` +
+                            `- Alt text for images: Passed<br>` +
+                            `- ARIA roles: Passed<br>` +
+                            `- Color contrast ratio: Needs Improvement<br>` +
+                            `- Headings structure: Passed<br>` +
+                            `- Keyboard navigation: Needs Improvement`;
+            document.getElementById('resultsDisplay').innerHTML = results;
+            document.getElementById('auditResult').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
